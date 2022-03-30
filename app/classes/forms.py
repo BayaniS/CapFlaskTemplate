@@ -69,3 +69,17 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class TherapistForm(FlaskForm):
+    title = StringField()
+    desc = StringField()
+    agerange = StringField()
+    location = StringField()
+    submit = SubmitField('Post')
+
+class ResourceForm(FlaskForm):
+    title = StringField()
+    desc = StringField()
+    agerange = StringField()
+    location = StringField()
+    submit = SubmitField('Post')

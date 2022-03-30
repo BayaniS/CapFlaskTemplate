@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <h1></h1>
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.title.label }} <br>
+                {{ form.title(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.title.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.desc.label }} <br>
+                {{ form.desc(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.desc.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.agerange.label }} <br>
+                {{ form.agerange(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.agerange.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.location.label }} <br>
+                {{ form.location(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in form.location.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.submit()}}
+            </p>
+        </form>
+        
+{% endblock %}

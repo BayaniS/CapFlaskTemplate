@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">All Entries</h1>
+    </div>
+    <div class="col">
+        <a href="/therapistform" class="btn btn-primary btn-sm mt-5" role="button">New Entry</a>
+    </div>
+</div>
+
+{% if therapists %}
+    {% for therapists in therapists %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/therapists/{{therapists.id}}">
+                    {{moment(therapists.createdate).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{therapists.author.username}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Subject</h3>
+                {% endif %}
+                {{therapists.title}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Something</h3>
+                {% endif %}
+                {{therapists.agerange}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Entries</h1>
+{% endif %}
+
+{% endblock %}

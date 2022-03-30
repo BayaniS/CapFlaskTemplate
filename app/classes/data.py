@@ -69,3 +69,21 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Therapist(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    subject = StringField()
+    content = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    agerange = StringField() 
+    location = StringField() 
+
+class Resource(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    subject = StringField()
+    content = StringField()
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    agerange = StringField() 
+    location = StringField() 

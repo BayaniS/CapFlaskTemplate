@@ -68,4 +68,16 @@ class Comment(Document):
 
     meta = {
         'ordering': ['-createdate']
+    } 
+
+class Help(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    post = ReferenceField('Post',reverse_delete_rule=CASCADE)
+    Issue = StringField()
+    Vent = StringField()
+    email = StringField()
+    content = StringField()
+
+    meta = {
+        'ordering': ['-createdate']
     }

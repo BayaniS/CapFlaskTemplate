@@ -10,10 +10,5 @@ def index():
 def aboutus():
     return render_template('aboutus.html')
 
-@app.route('/therapists')
-def therapists():
-    return render_template('therapists.html')
 
-@app.route('/therapistform')
-def therapistform():
-    return render_template('therapistform.html')
+

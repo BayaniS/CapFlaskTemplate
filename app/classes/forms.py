@@ -72,9 +72,9 @@ class CommentForm(FlaskForm):
 
 class TherapistForm(FlaskForm):
     title = StringField()
-    desc = StringField()
-    agerange = StringField()
-    location = StringField()
+    desc = StringField("Description")
+    agerange = StringField("Ages")
+    location = StringField("Location")
     submit = SubmitField('Post')
 
 class ResourceForm(FlaskForm):

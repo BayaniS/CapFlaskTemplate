@@ -245,8 +245,8 @@ def therapistNew():
         newTherapist = Therapist(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
+            title = form.title.data,
+            desc = form.desc.data,
             agerange = form.agerange.data,
             location = form.location.data,
             author = current_user.id,
@@ -291,9 +291,10 @@ def therapistEdit(therapistID):
     if form.validate_on_submit():
         # update() is mongoengine method for updating an existing document with new data.
         editTherapist.update(
-            subject = form.subject.data,
-            content = form.content.data,
-            exclass = form.exclass.data,
+            title = form.title.data,
+            desc = form.desc.data,
+            agerange = form.agerange.data,
+            location = form.location.data,
             modifydate = dt.datetime.utcnow
         )
         # After updating the document, send the user to the updated post using a redirect.
@@ -301,9 +302,10 @@ def therapistEdit(therapistID):
 
     # if the form has NOT been submitted then take the data from the editPost object
     # and place it in the form object so it will be displayed to the user on the template.
-    form.subject.data = editTherapist.subject
-    form.content.data = editTherapist.content
-    form.exclass.data = editTherapist.exclass
+    form.title.data = editTherapist.title
+    form.desc.data = editTherapist.desc
+    form.agerange.data = editTherapist.agerange
+    form.location.data = editTherapist.location
 
     # Send the user to the post form that is now filled out with the current information
     # from the form.

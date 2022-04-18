@@ -7,39 +7,39 @@
         <h1 class="display-1">All Entries</h1>
     </div>
     <div class="col">
-        <a href="/therapist/new" class="btn btn-primary btn-sm mt-5" role="button">New Entry</a>
+        <a href="/resource/new" class="btn btn-primary btn-sm mt-5" role="button">New Entry</a>
     </div>
 </div>
 
-{% if therapists %}
-    {% for therapists in therapists %}
+{% if resources %}
+    {% for resources in resources %}
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
                 {% endif %}
 
-                <a href="/therapist/{{therapists.id}}">
-                    {{moment(therapists.createdate).calendar()}}
+                <a href="/resource/{{resources.id}}">
+                    {{moment(resources.createdate).calendar()}}
                 </a>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Name</h3>
                 {% endif %}
-                {{therapists.title}}
+                {{resources.title}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Location</h3>
                 {% endif %}
-                {{therapists.location}}
+                {{resources.location}}
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Ages </h3>
                 {% endif %}
-                {{therapists.agerange}}
+                {{resources.agerange}}
             </div>
         </div>
     {% endfor %}

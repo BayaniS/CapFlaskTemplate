@@ -33,14 +33,8 @@ def therapistList():
 def therapist(therapistID):
     # retrieve the post using the postID
     thisTherapist = Therapist.objects.get(id=therapistID)
-    # If there are no comments the 'comments' object will have the value 'None'. Comments are 
-    # related to posts meaning that every comment contains a reference to a post. In this case
-    # there is a field on the comment collection called 'post' that is a reference the Post
-    # document it is related to.  You can use the postID to get the post and then you can use
-    # the post object (thisPost in this case) to get all the comments.
-    theseComments = Comment.objects(therapist=thisTherapist)
-    # Send the post object and the comments object to the 'post.html' template.
-    return render_template('therapist.html',therapist=thisTherapist,comments=theseComments)
+
+    return render_template('therapist.html',therapist=thisTherapist)
 
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the 

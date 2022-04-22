@@ -2,13 +2,13 @@
 
 {% block body %}
 
-{% if therapists %}
+{% if therapist %}
 
-{{moment(therapist.createdate).calendar()}} by {{therapist.author.username}} 
-{% if therapist.modifydate %}
-    modified {{moment(therapist.modifydate).calendar()}}
-{% endif %}
-<br>
+    {{moment(therapist.createdate).calendar()}} by {{therapist.author.username}} 
+    {% if therapist.modifydate %}
+        modified {{moment(therapist.modifydate).calendar()}}
+    {% endif %}
+    <br>
     {% if therapist.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Entry" href="/therapist/delete/{{therapist.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
@@ -28,28 +28,6 @@
         {{therapist.desc}}
 
     </p>
-    <a href="/comment/new/{{therapist.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
-
-    <div class="ms-5">
-    {% if comments %}
-    <h1 class="display-5">Comments</h1>
-    {% for comment in comments %}
-        {% if current_user == comment.author %}
-            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
-            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
-        {% endif %}
-        {{moment(comment.createdate).calendar()}} {{comment.author.username}} 
-        {% if comment.modifydate %}
-            modified {{moment(comment.modifydate).calendar()}}
-        {% endif %}
-        <br>
-        <p class="fs-3">
-            {{comment.content}}
-        </p>
-    {% endfor %}
-    {% else %}
-        <h1 class="display-5">No Comments</h1>
-    {% endif %}
     </div>
 {% else %}
     <h1 class="display-5">No Entries</h1>

@@ -74,7 +74,7 @@ class TherapistForm(FlaskForm):
     title = StringField()
     desc = StringField("Description")
     agerange = StringField("Ages")
-    location = StringField("Location")
+    location = StringField("Additional Info")
     submit = SubmitField('Post')
 
 class ResourceForm(FlaskForm):

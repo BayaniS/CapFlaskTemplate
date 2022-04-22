@@ -17,7 +17,7 @@ import datetime as dt
 def resourceList():
     # This retrieves all of the 'posts' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'posts'.
-    resources = resource.objects()
+    resources = Resource.objects()
     # This renders (shows to the user) the posts.html template. it also sends the posts object
     # to the template as a variable named posts.  The template uses a for loop to display
     # each post.
@@ -81,7 +81,7 @@ def resourceDelete(resourceID):
 # This is a function that is run when the user requests this route.
 def resourceNew():
     # This gets the form object from the form.py classes that can be displayed on the template.
-    form = resourceForm()
+    form = ResourceForm()
  
     # This is a conditional that evaluates to 'True' if the user submitted the form successfully.
     # validate_on_submit() is a method of the form object.
@@ -134,7 +134,7 @@ def resourceEdit(resourceID):
         flash("You can't edit a entry you don't own.")
         return redirect(url_for('resource',resourceID=resourceID))
     # get the form object
-    form = resourceForm()
+    form = ResourceForm()
     # If the user has submitted the form then update the post.
     if form.validate_on_submit():
         # update() is mongoengine method for updating an existing document with new data.

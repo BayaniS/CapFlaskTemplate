@@ -6,7 +6,7 @@ from app import app, login
 import mongoengine.errors
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user
-from app.classes.data import Comment, Resource
+from app.classes.data import Resource
 from app.classes.forms import ResourceForm
 from flask_login import login_required
 import datetime as dt
@@ -33,15 +33,7 @@ def resourceList():
  
 def resource(resourceID):
     # retrieve the post using the postID
-    thisresource = resource.objects.get(id=resourceID)
-    # If there are no comments the 'comments' object will have the value 'None'. Comments are
-    # related to posts meaning that every comment contains a reference to a post. In this case
-    # there is a field on the comment collection called 'post' that is a reference the Post
-    # document it is related to.  You can use the postID to get the post and then you can use
-    # the post object (thisPost in this case) to get all the comments.
-    theseComments = Comment.objects(resource=thisresource)
-    # Send the post object and the comments object to the 'post.html' template.
-    return render_template('resource.html',resource=thisresource,comments=theseComments)
+    thisresource = Resource.objects.get(id=resourceID)
  
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the
@@ -52,7 +44,7 @@ def resource(resourceID):
 @login_required
 def resourceDelete(resourceID):
     # retrieve the post to be deleted using the postID
-    deleteresource = resource.objects.get(id=resourceID)
+    deleteresource = Resource.objects.get(id=resourceID)
     # check to see if the user that is making this request is the author of the post.
     # current_user is a variable provided by the 'flask_login' library.
     if current_user == deleteresource.author:
@@ -64,7 +56,7 @@ def resourceDelete(resourceID):
         # if the user is not the author tell them they were denied.
         flash("You can't delete a entry you don't own.")
     # Retrieve all of the remaining posts so that they can be listed.
-    resources = resource.objects()  
+    resources = Resource.objects()  
     # Send the user to the list of remaining posts.
     return render_template('resources.html',resources=resources)
  
@@ -90,7 +82,7 @@ def resourceNew():
         # This stores all the values that the user entered into the new post form.
         # Post() is a mongoengine method for creating a new post. 'newPost' is the variable
         # that stores the object that is the result of the Post() method.  
-        newresource = resource(
+        newresource = Resource(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
             title = form.title.data,
@@ -126,7 +118,7 @@ def resourceNew():
 @app.route('/resource/edit/<resourceID>', methods=['GET', 'POST'])
 @login_required
 def resourceEdit(resourceID):
-    editresource = resource.objects.get(id=resourceID)
+    editresource = Resource.objects.get(id=resourceID)
     # if the user that requested to edit this post is not the author then deny them and
     # send them back to the post. If True, this will exit the route completely and none
     # of the rest of the route will be run.

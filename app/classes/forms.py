@@ -81,5 +81,6 @@ class ResourceForm(FlaskForm):
     title = StringField()
     desc = StringField("Description")
     agerange = StringField("Ages")
+    image = FileField("Image")
     location = StringField("Location")
     submit = SubmitField('Post')

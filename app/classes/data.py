@@ -83,6 +83,7 @@ class Resource(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     title = StringField()
     desc = StringField()
+    image = FileField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
     agerange = StringField() 

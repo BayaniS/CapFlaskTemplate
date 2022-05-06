@@ -1,3 +1,13 @@
-h1 {
+h1{
     color: #5F93A0;
+}
+.youth {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 1px 1px 1px blue,
+    2px 2px 1px blue;
+    text-align: center;
+    text-decoration-line: underline;
+}
+.ourGoal{
+    font-family: 'Changa', sans-serif;
 }

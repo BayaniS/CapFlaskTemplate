@@ -82,6 +82,7 @@ class Therapist(Document):
 class Resource(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     title = StringField()
+    image = FileField()
     desc = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()

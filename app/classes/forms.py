@@ -80,6 +80,7 @@ class TherapistForm(FlaskForm):
 class ResourceForm(FlaskForm):
     title = StringField()
     desc = StringField("Description")
+    image = FileField()
     agerange = StringField("Ages")
     location = StringField("Location")
     submit = SubmitField('Post')

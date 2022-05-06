@@ -34,6 +34,7 @@ def resourceList():
 def resource(resourceID):
     # retrieve the post using the postID
     thisresource = Resource.objects.get(id=resourceID)
+    return render_template('resource.html',resource=thisresource)
  
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the
@@ -95,6 +96,11 @@ def resourceNew():
         )
         # This is a method that saves the data to the mongoDB database.
         newresource.save()
+        newresource.reload()
+        if form.image.data:
+            newresource.image.put(form.image.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            newresource.save()
  
         # Once the new post is saved, this sends the user to that post using redirect.
         # and url_for. Redirect is used to redirect a user to different route so that
@@ -137,6 +143,12 @@ def resourceEdit(resourceID):
             location = form.location.data,
             modifydate = dt.datetime.utcnow
         )
+        if form.image.data:
+            if editresource.image:
+                editresource.image.delete()
+            editresource.image.put(form.image.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            editresource.save()
         # After updating the document, send the user to the updated post using a redirect.
         return redirect(url_for('resource',resourceID=resourceID))
  

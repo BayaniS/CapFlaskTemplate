@@ -23,7 +23,10 @@
         {% if resource.author.image %}
             <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(resource.author.image.read())}}">
         {% endif %}
-    <h2>Description:</h2>
+        {% if resource.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(resource.image.read())}}">
+        {% endif %}    
+        <h2>Description:</h2>
         {{resource.desc}}
     </p>
     <h2>Age Range:</h2>

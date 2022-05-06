@@ -63,7 +63,7 @@ class ProfileForm(FlaskForm):
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
-    exclass = StringField('Something', validators=[DataRequired()])
+    # exclass = StringField('Something', validators=[DataRequired()])
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):
@@ -74,12 +74,13 @@ class TherapistForm(FlaskForm):
     title = StringField()
     desc = StringField("Description")
     agerange = StringField("Ages")
-    location = StringField("Location")
+    location = StringField("Additional Info")
     submit = SubmitField('Post')
 
 class ResourceForm(FlaskForm):
     title = StringField()
     desc = StringField("Description")
     agerange = StringField("Ages")
+    image = FileField("Image")
     location = StringField("Location")
     submit = SubmitField('Post')

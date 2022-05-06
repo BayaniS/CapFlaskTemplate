@@ -14,14 +14,6 @@
                 {% endfor %}
             </p>
             <p>
-                {{ form.image.label }} <br>
-                {{ form.image(cols=64, rows=10) }}
-                <!--List the errors for this field-->
-                {% for error in form.image.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
                 {{ form.desc.label }} <br>
                 {{ form.desc(cols=64, rows=10) }}
                 <!--List the errors for this field-->

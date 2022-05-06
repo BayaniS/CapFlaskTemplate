@@ -88,7 +88,6 @@ def resourceNew():
             title = form.title.data,
             desc = form.desc.data,
             agerange = form.agerange.data,
-            image = form.image.data,
             location = form.location.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
@@ -135,7 +134,6 @@ def resourceEdit(resourceID):
             title = form.title.data,
             desc = form.desc.data,
             agerange = form.agerange.data,
-            image = form.image.data,
             location = form.location.data,
             modifydate = dt.datetime.utcnow
         )
@@ -147,7 +145,6 @@ def resourceEdit(resourceID):
     form.title.data = editresource.title
     form.desc.data = editresource.desc
     form.agerange.data = editresource.agerange
-    form.image.data = editresource.image
     form.location.data = editresource.location
  
     # Send the user to the post form that is now filled out with the current information

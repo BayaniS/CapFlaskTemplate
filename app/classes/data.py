@@ -51,7 +51,6 @@ class Post(Document):
     content = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
-    # exclass = StringField() 
 
     meta = {
         'ordering': ['-createdate']

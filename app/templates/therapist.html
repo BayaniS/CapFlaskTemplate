@@ -21,7 +21,7 @@
     <h1 class="display-5">{{therapist.title}}</h1>
     <p class="fs-3 text-break">
         {% if therapist.author.image %}
-            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(therapist.author.image.read())}}">
+            <img width="360" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(therapist.author.image.read())}}">
         {% endif %}
     <h2>Description:</h2>
         {{therapist.desc}}

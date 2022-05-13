@@ -23,8 +23,7 @@
         {% if post.author.image %}
             <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(post.author.image.read())}}">
         {% endif %}
-        {{post.content}}
-        <h1>[question]</h1>
+        <h1>Question:</h1>
         {{post.content}}
 
     </p>
